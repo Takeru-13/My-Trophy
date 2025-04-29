@@ -4,6 +4,7 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "./firebase";
 import { Link } from "react-router-dom";
 
+
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -19,7 +20,6 @@ function Login() {
 
       // await setDoc(doc(db, "users", user.uid), {
       //   email: user.email,
-      
       //   xp: 0,
       //   level: 1,
       // });

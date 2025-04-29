@@ -1,305 +1,305 @@
 /* Home.css */
 body {
-    margin: 0;
-    font-family: 'Noto Sans JP', sans-serif;
-    background: linear-gradient(145deg, #19192c, #000000);
-    color: white;
-  }
-  
+  margin: 0;
+  font-family: 'Noto Sans JP', sans-serif;
+  background: linear-gradient(145deg, #19192c, #000000);
+  color: white;
+}
+
 h2{
-  font-size: 20px;
+font-size: 20px;
 }
 
 .home-container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 30px 20px;
-    color: white;
-  }
-  
-  .trophy-card {
-    background: linear-gradient(145deg, #1c1c1c, #252525);
-    box-shadow:
-      0 4px 8px rgba(0, 0, 0, 0.3),
-      0 0 10px rgba(0, 255, 255, 0.249); /* ランクに応じて色変更もあり！ */
-    border: 1px solid #333;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-  .trophy-card:hover {
-    transform: translateY(-5px);
-    box-shadow:
-      0 8px 20px rgba(0, 255, 255, 0.557),
-      0 0 20px rgba(0, 255, 255, 0.3);
-  }
-  
-  .trophy-info {
-    flex: 1;
-    margin-left: 10px;
-  }
-  
-  .trophy-title {
-    font-size: 16px;
-    font-weight: bold;
-  }
-  
-  .trophy-date {
-    font-size: 12px;
-    color: #aaa;
-  }
-  .level-text{
-    width: 70%;
-    margin: 0 auto;
-  }
-  .user-name{
-    font-size: 30px;
-    width: 50%;
-    margin: 0 auto;
-    margin-bottom: 0;
-    text-align: left;
-  }
-  .user-name p{
-    margin-bottom: 0;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 30px 20px;
+  color: white;
+}
 
-  }
-  @import url(https://fonts.googleapis.com/css?family=Exo+2:200i);
+.trophy-card {
+  background: linear-gradient(145deg, #1c1c1c, #252525);
+  box-shadow:
+    0 4px 8px rgba(0, 0, 0, 0.3),
+    0 0 10px rgba(0, 255, 255, 0.249); /* ランクに応じて色変更もあり！ */
+  border: 1px solid #333;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.trophy-card:hover {
+  transform: translateY(-5px);
+  box-shadow:
+    0 8px 20px rgba(0, 255, 255, 0.557),
+    0 0 20px rgba(0, 255, 255, 0.3);
+}
+
+.trophy-info {
+  flex: 1;
+  margin-left: 10px;
+}
+
+.trophy-title {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.trophy-date {
+  font-size: 12px;
+  color: #aaa;
+}
+.level-text{
+  width: 70%;
+  margin: 0 auto;
+}
+.user-name{
+  font-size: 30px;
+  width: 50%;
+  margin: 0 auto;
+  margin-bottom: 0;
+  text-align: left;
+}
+.user-name p{
+  margin-bottom: 0;
+
+}
+@import url(https://fonts.googleapis.com/css?family=Exo+2:200i);
 
 .title-logo {
-    color: #fff;
-    text-shadow:
-      0 0 7px #fff,
-      0 0 10px #fff,
-      0 0 21px #fff,
-  }
+  color: #fff;
+  text-shadow:
+    0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 21px #fff,
+}
 
 
 /* Additional styling */
-  
+
 body {
-  font-size: 18px;
-  font-family: "Helvetica Neue", sans-serif;
-  background-color: #010a01;
+font-size: 18px;
+font-family: "Helvetica Neue", sans-serif;
+background-color: #010a01;
 }  
 
 
 
 .title-logo{
-  animation: flicker 10s infinite alternate;
-  color: #fff;
-  font-size: 4.2rem;    
+animation: flicker 10s infinite alternate;
+color: #fff;
+font-size: 4.2rem;    
 }
 @keyframes flicker {
-    
-  0%, 18%, 22%, 25%, 53%, 57%, 100% {
+  
+0%, 18%, 22%, 25%, 53%, 57%, 100% {
 
-      text-shadow:
-      0 0 4px #fff,
-      0 0 11px #fff,
-      0 0 19px #fff,
-      0 0 40px rgb(0, 255, 221),
-      0 0 80px #0fa,
-      0 0 90px #0fa,
-      0 0 100px #0fa,
-      0 0 150px #0fa;
-  
-  }
-  
-  20%, 24%, 55% {        
-      text-shadow: none;
-  }    
+    text-shadow:
+    0 0 4px #fff,
+    0 0 11px #fff,
+    0 0 19px #fff,
+    0 0 40px rgb(0, 255, 221),
+    0 0 80px #0fa,
+    0 0 90px #0fa,
+    0 0 100px #0fa,
+    0 0 150px #0fa;
+
+}
+
+20%, 24%, 55% {        
+    text-shadow: none;
+}    
 }
 
 
 .trophy-rank-image{
-  width: 200px;
-  height: 200px;
+width: 200px;
+height: 200px;
 }
 
 .add-button{
-  margin-bottom: 0;
+margin-bottom: 0;
 }
 
 a span:nth-child(3){
-    bottom: 0;
-    right: 0;
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(270deg,transparent,#03e9f4);
-    animation: animate3 1s linear infinite;
-    animation-delay: 0.50s;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(270deg,transparent,#03e9f4);
+  animation: animate3 1s linear infinite;
+  animation-delay: 0.50s;
 }
 @keyframes animate3{
-    0%{
-        right: -100%;
-    }
-    50%,100%{
-        right: 100%;
-    }
+  0%{
+      right: -100%;
+  }
+  50%,100%{
+      right: 100%;
+  }
 }
 
 a{
-    position: relative;
-    display: inline-block;
-    padding: 25px 30px;
-    margin: 0 auto;
-    color: #03e9f4;
-    text-decoration: none;
-    text-transform: uppercase;
-    transition: 0.5s;
-    letter-spacing: 4px;
-    overflow: hidden;
-    border: solid 2px #22f6e4;
-    width:200px;
-    display: block;
+  position: relative;
+  display: inline-block;
+  padding: 25px 30px;
+  margin: 0 auto;
+  color: #03e9f4;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: 0.5s;
+  letter-spacing: 4px;
+  overflow: hidden;
+  border: solid 2px #22f6e4;
+  width:200px;
+  display: block;
 
-    
-   
+  
+ 
 }
 .menu-button{
-  background-color: rgba(0, 0, 0, 0);
-    position: relative;
-    display: inline-block;
-    padding: 25px 30px;
-    margin: 0 auto;
-    color: #03e9f4;
-    text-decoration: none;
-    text-transform: uppercase;
-    transition: 0.5s;
-    letter-spacing: 4px;
-    overflow: hidden;
-    border: solid 2px #22f6e4;
-    display: block;
-    width: 265px;
-   
+background-color: rgba(0, 0, 0, 0);
+  position: relative;
+  display: inline-block;
+  padding: 25px 30px;
+  margin: 0 auto;
+  color: #03e9f4;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: 0.5s;
+  letter-spacing: 4px;
+  overflow: hidden;
+  border: solid 2px #22f6e4;
+  display: block;
+  width: 265px;
+ 
 }
 a:hover{
-    background: #03e9f4;
-    color: #050801;
-    box-shadow: 0 0 5px #22f6e4,
-                0 0 25px #22f6e4,
-                0 0 50px #22f6e4,
-                0 0 100px #22f6e4;
+  background: #03e9f4;
+  color: #050801;
+  box-shadow: 0 0 5px #22f6e4,
+              0 0 25px #22f6e4,
+              0 0 50px #22f6e4,
+              0 0 100px #22f6e4;
 }
 .menu-button:hover{
-    background: #03e9f4;
-    color: #050801;
-    box-shadow: 0 0 5px #22f6e4,
-                0 0 25px #22f6e4,
-                0 0 50px #22f6e4,
-                0 0 100px #22f6e4;
+  background: #03e9f4;
+  color: #050801;
+  box-shadow: 0 0 5px #22f6e4,
+              0 0 25px #22f6e4,
+              0 0 50px #22f6e4,
+              0 0 100px #22f6e4;
 }
 a:nth-child(1){
-    filter: hue-rotate(270deg);
+  filter: hue-rotate(270deg);
 }
 a:nth-child(2){
-    filter: hue-rotate(110deg);
+  filter: hue-rotate(110deg);
 }
 a span{
-    position: absolute;
-    display: block;
+  position: absolute;
+  display: block;
 }
 a span:nth-child(1){
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(90deg,transparent,#03e9f4);
-    animation: animate1 1s linear infinite;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg,transparent,#03e9f4);
+  animation: animate1 1s linear infinite;
 }
 @keyframes animate1{
-    0%{
-        left: -100%;
-    }
-    50%,100%{
-        left: 100%;
-    }
+  0%{
+      left: -100%;
+  }
+  50%,100%{
+      left: 100%;
+  }
 }
 .user-name-container{
-  width:80%;
-  margin:0 auto;
+width:80%;
+margin:0 auto;
 }
 .user-name{
-  font-size: 20px;
-  margin: 0;
+font-size: 20px;
+margin: 0;
 
 }
 
 
 .exp-bar-background {
-  width: 100%;
-  height: 20px;
-  background-color: #333;
-  border-radius: 5px;
-  overflow: hidden;
-  box-shadow: inset 0 0 5px #000;
+width: 100%;
+height: 20px;
+background-color: #333;
+border-radius: 5px;
+overflow: hidden;
+box-shadow: inset 0 0 5px #000;
 }
 
 .exp-bar-fill {
-  height: 100%;
-  border-radius: 5px;
+height: 100%;
+border-radius: 5px;
 }
 
 .glowing-bar {
-  background: linear-gradient(
-    90deg,
-    #00f2fe,
-    #4facfe,
-    #00f2fe
-  );
-  background-size: 200% 100%;
-  animation: glowAnimation 3s linear infinite;
-  box-shadow:
-    0 0 15px rgba(0, 255, 255, 0.8),
-    0 0 30px rgba(0, 255, 255, 0.6),
-    0 0 45px rgba(0, 255, 255, 0.5),
-    0 0 60px rgba(0, 255, 255, 0.4);
+background: linear-gradient(
+  90deg,
+  #00f2fe,
+  #4facfe,
+  #00f2fe
+);
+background-size: 200% 100%;
+animation: glowAnimation 3s linear infinite;
+box-shadow:
+  0 0 15px rgba(0, 255, 255, 0.8),
+  0 0 30px rgba(0, 255, 255, 0.6),
+  0 0 45px rgba(0, 255, 255, 0.5),
+  0 0 60px rgba(0, 255, 255, 0.4);
 }
 
 @keyframes glowAnimation {
-  0% {
-    background-position: 0% 0%;
-    filter: brightness(1.2);
-  }
-  50% {
-    background-position: 100% 0%;
-    filter: brightness(1.6);
-  }
-  100% {
-    background-position: 200% 0%;
-    filter: brightness(1.2);
-  }
+0% {
+  background-position: 0% 0%;
+  filter: brightness(1.2);
+}
+50% {
+  background-position: 100% 0%;
+  filter: brightness(1.6);
+}
+100% {
+  background-position: 200% 0%;
+  filter: brightness(1.2);
+}
 }
 
 .menu-dropdown {
-  margin-bottom: 0;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s ease-in-out;
-  background-color: #2c2c2c;
-  border-radius: 12px;
-  margin-top: 10px;
-  box-shadow: 0 4px 12px rgba(0, 255, 255, 0.2);
+margin-bottom: 0;
+max-height: 0;
+overflow: hidden;
+transition: max-height 0.4s ease-in-out;
+background-color: #2c2c2c;
+border-radius: 12px;
+margin-top: 10px;
+box-shadow: 0 4px 12px rgba(0, 255, 255, 0.2);
 }
 
 
 .menu-dropdown.open {
-  max-height: 200px; /* 十分な高さにしておけばOK */
-  padding: 10px 0;
+max-height: 200px; /* 十分な高さにしておけばOK */
+padding: 10px 0;
 }
 
 .menu-item {
-  padding: 10px 20px;
-  color: white;
-  font-size: 1rem;
-  border-bottom: 1px solid #444;
+padding: 10px 20px;
+color: white;
+font-size: 1rem;
+border-bottom: 1px solid #444;
 }
 
 .menu-item:last-child {
-  border-bottom: none;
+border-bottom: none;
 }
 
 
 
 .menu-item:hover {
-  background-color: #444;
-  cursor: pointer;
+background-color: #444;
+cursor: pointer;
 }

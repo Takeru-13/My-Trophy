@@ -2,105 +2,67 @@ import React, { useState, useEffect } from "react";
 import TrophyList from "./AllTrophies";
 import { Link } from "react-router-dom";
 import { auth, db } from "./firebase";
-import {
-          doc,
-          onSnapshot,
-          orderBy,
-          limit,
-          getDocs,
-          query,
-          collection,
-       } from "firebase/firestore";
-
+import { doc, onSnapshot, orderBy, limit, getDocs } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
-import { fetchLatestTrophies } from "./utils/firestoreUtils";
+import './styles/Home.css';
 import { motion } from "framer-motion";
 import RecentTrophies from "./RecentTrophies";
-import LatestTrophies from "./LatestTrophies";
-import './styles/Home.css';
 
 
 function Home() {
   const [level, setLevel] = useState(1);
   const [experience, setExperience] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [userData, setUserData] = useState(null);
-  const [currentUserId, setCurrentUserId] = useState(null);
 
   const toggleMenu = () => {
     setIsMenuOpen((prev) => !prev);
   };
 
-  // 新着トロフィーの取得
-  const fetchLatestTrophies = async () => {
-    const q = query(
-      collection(db, "trophies"),
-      orderBy("createdAt", "desc"),
-      limit(10)
-    );
-    const snapshot = await getDocs(q);
-    return snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-  };
+
 
   useEffect(() => {
-    let unsubscribeSnapshot = () => {};
-  
-    const unsubscribeAuth = onAuthStateChanged(auth, async (user) => {
+    const unsubscribeAuth = onAuthStateChanged(auth,async (user) => {
       if (!user) return;
   
-      setCurrentUserId(user.uid);
-  
       const userDocRef = doc(db, "users", user.uid);
-      unsubscribeSnapshot = onSnapshot(userDocRef, (docSnapshot) => {
+      const unsubscribeSnapshot = onSnapshot(userDocRef, (docSnapshot) => {
         if (docSnapshot.exists()) {
           const userData = docSnapshot.data();
-          console.log("Firestoreから取得したユーザーデータ:", userData);
-          setLevel(userData.level); // レベルを更新
-          setExperience(userData.experience); // 経験値を更新
-          setUserData(userData);
+          setLevel(userData.level);
+          setExperience(userData.experience);
         }
       });
+  
+      // 認証状態 or スナップショットの解除
+      return () => unsubscribeSnapshot();
     });
   
-    return () => {
-      unsubscribeAuth();      // 認証の監視解除
-      unsubscribeSnapshot();  // Firestoreの監視解除
-    };
+    // auth リスナーもクリーンアップ
+    return () => unsubscribeAuth();
   }, []);
+  
+
   return (
 
     <div style={{ textAlign: "center", marginTop: "50px" }}>
-      <h1 className="title-logo" id="page_top">
-        <a href="#" className="no-hover"><img src="/images/trophy-logo.png" alt="" /></a>
-      </h1>
+      <h2 className="title-logo">MyTrophy</h2>
 
       
-      <div className="icon-name-container"> 
-      {userData && (
-        <div style={{ display: "flex", alignItems: "center", }} className="icon-name">
-          <img
-            src={`/user-icon/${userData.icon}`}
-            alt="ユーザーアイコン"
-            style={{ width: "50px", height: "50px", borderRadius: "50%", marginRight: "10px" }}
-          />
-          <h2>{userData.name} </h2>
-        </div>
-      )}
-
-      {/* その他のホームコンテンツ（レベル表示・トロフィー一覧など） */}
-    </div>
+      <div className="user-name-container">
+        <p className="user-name">USER=NAME</p>
+      </div>
       <div style={styles.levelContainer}>
         <div className="level-text" style={styles.levelHeader}>
         
          <span>Lv.{level}</span>
-         <span>{experience}/{(level + 1) * 10} EXP</span>
+         <span>{experience}/{(level + 1) * 30} EXP</span>
         </div>
       <div style={styles.expBarBackground}>
         <div
         className="exp-bar-fill glowing-bar" 
           style={{
             ...styles.expBarFill,
-            width: `${(experience / ((level + 1) * 10)) * 100}%`,
+            width: `${(experience / ((level + 1) * 30)) * 100}%`,
           }}
         />
       </div>
@@ -110,27 +72,9 @@ function Home() {
           </button>
           <div className={`menu-dropdown ${isMenuOpen ? "open" : ""}`}>
             <Link to="/trophies" className="menu-item">🏆 トロフィー一覧</Link>
-            <div
-             className="menu-item"
-             onClick={() => {
-               const confirmLogout = window.confirm("ログアウトしますか？");
-               if (confirmLogout) {
-                 auth.signOut()
-                   .then(() => {
-                     alert("ログアウトしました！");
-                     window.location.href = "/login"; // ログイン画面にリダイレクト
-                   })
-                   .catch((error) => {
-                     console.error("ログアウトエラー:", error);
-                     alert("ログアウトに失敗しました。");
-                   });
-               }
-             }}
-           >
-             🚪 ログアウト
-           </div>
+            <div className="menu-item">🔍 検索・ソート</div>
           </div>
-          
+
           <Link to="/add" className="add-button">
           <span></span>
           <span></span>
@@ -138,15 +82,7 @@ function Home() {
             +AddTrophy
           </Link>
           <RecentTrophies />
-      {/* 他ユーザーの新着トロフィー */}
 
-      <section>
-      {currentUserId && (
-      <LatestTrophies currentUserId={currentUserId} />
-)}
-      </section>
-
-          <a href="#page_top" className="page_top_btn">↑</a>
     </div>
   );
 }
