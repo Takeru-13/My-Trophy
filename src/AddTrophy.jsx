@@ -22,7 +22,7 @@ function AddTrophy() {
   const [category, setCategory] = useState("");
   const [rank, setRank] = useState("");
   const [episode, setEpisode] = useState("");
-  const [date, setDate] = useState("");
+  const [date, setDate] = useState(new Date().toISOString().split("T")[0]);
   const [level, setLevel] = useState(1); 
 
   useEffect(() => {
@@ -148,6 +148,7 @@ console.log("Firestoreに保存したレベル:", userLevel);
           style={{ ...styles.input, height: "80px" }}
         />
 
+        <label style={{ marginBottom: '4px', display: 'block' }}>日付（年/月/日）</label>
         <input
           type="date"
           value={date}

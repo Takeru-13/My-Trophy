@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { auth, db } from "./firebase";
 import { onAuthStateChanged } from "firebase/auth";
 import { collection, query, orderBy, limit, getDocs, where, onSnapshot } from "firebase/firestore";
-import "./styles/RecentTrophies.css"; // スタイル共通でOK
+import "./styles/RecentTrophies.css";
 
 
 function RecentTrophies() {
