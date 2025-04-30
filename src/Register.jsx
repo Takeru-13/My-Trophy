@@ -95,7 +95,20 @@ function Register() {
         <p style={{ marginTop: "20px" }}>
           すでにアカウントをお持ちの方は
         </p>
-        <Link to="/login">ログインページへ</Link>
+        <Link
+  to="/login"
+  style={styles.link}
+  onMouseEnter={(e) => {
+    e.target.style.backgroundColor = styles.linkHover.backgroundColor;
+    e.target.style.color = styles.linkHover.color;
+  }}
+  onMouseLeave={(e) => {
+    e.target.style.backgroundColor = "transparent";
+    e.target.style.color = styles.link.color;
+  }}
+>
+  ログインページへ
+</Link>
         {error && <p style={styles.error}>{error}</p>}
       </form>
     </div>
@@ -125,6 +138,16 @@ const styles = {
     color: "#fff",
     border: "none",
     cursor: "pointer",
+  },
+  link: {
+    color: "aqua",
+    textDecoration: "none",
+    padding: "20px 30px",
+    transition: "all 0.3s ease",
+  },
+  linkHover: {
+    backgroundColor: "aqua",
+    color: "black",
   },
   error: {
     color: "red",

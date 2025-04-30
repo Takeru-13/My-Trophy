@@ -11,18 +11,27 @@
   display: block;
 }
 
+.title-logo{
+  text-align: center;
+}
+.title-logo a{
+  width: 100%;
+  border: none;
+  text-align: center;
+}
+
 .all-head{
     text-align: center;
     margin: 30px 0;
 }
 .all-menu{
-    padding-bottom: 50px;
+    padding-bottom: 30px;
     display: flex;
-    width: 80%;
+    width: 100%;
     margin: 0 auto;
     justify-content: center;
 }
-
+back-to-home
 
 .trophy-list {
     /* display: flex; */
@@ -57,19 +66,6 @@
     display: inline;
   }
   
-  .trophy-card button {
-    background-color: #f44336;
-    color: white;
-    border: none;
-    padding: 8px 12px;
-    border-radius: 8px;
-    cursor: pointer;
-  }
-  
-  .trophy-card button:hover {
-    background-color: #d32f2f;
-  }
-  
   .search-input {
     display: block;
     padding: 8px;
@@ -81,10 +77,130 @@
   }
   
   .back-to-home {
+    color: aquamarine;
     display: block;
+    width: 120px;
+    height: 50px;
+    line-height: 50px;
+    padding: 0px;
     margin: 20px auto;
     text-align: center;
     font-size: 1.2em;
     text-decoration: none;
+    margin-top: 0;
+    border: solid 2px aquamarine;
+    margin-bottom: 30px;
+    font-weight: normal;
+  }
+
+  .back-to-home:hover{
+    color:#000000;
+    background-color: aquamarine;
   }
   
+  .trophy-title{
+    padding: 10px 0;
+  }
+
+  .trophy-episod{
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+  }
+
+  .cate-del{
+    padding-top: 10px;
+    margin: 10px auto;
+  }
+
+  a{
+    border: none;
+  }
+  .edit-button {
+    text-align: center;
+    font-size:18px;
+    width: 80px;
+    height: 30px;
+    line-height: 30px;
+    padding: 0;
+    border: 2px solid aquamarine;
+    text-align: center;
+    color:aquamarine;
+    margin-right: 5px;
+    margin-left: 0;
+  }
+
+  .edit-button:hover{
+    border: none;
+    background-color: aquamarine;
+    color: black;
+  }
+
+  .del-button{
+    font-size:18px;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0);
+    /* font-size: 20px; */
+    width: 80px;
+    height: 33px;
+    line-height: 33px;
+    padding: 0;
+    border: 2px solid rgb(255, 132, 50);
+    text-align: center;
+    color:rgb(255, 132, 50);
+    margin-left: 5px;
+  }
+  
+  .del-button:hover{
+    border: none;
+    background-color: rgb(255, 132, 50);
+    color: black;
+    transition: 0.5s;
+  }
+
+  .cata-del{
+    margin: 10px auto;
+  }
+
+  .page_top_btn{
+    width: 30px;
+    height: 30px;
+    border: solid 1px aqua;
+    line-height: 30px;
+  }
+
+  .page_top_btn:hover{
+    background-color: aqua;
+    color:#000000;
+  }
+
+  .good-button{
+    color: white;
+  }
+
+.all-menu select {
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 7px;
+  padding: 5px 10px;
+  font-size: 12px;
+  color: black;
+}
+
+.no-hover{
+  width: 80%;
+  padding: 0;
+}
+
+.no-hover:hover {
+
+  background-color: inherit !important; /* 色を変更しない */
+  
+}
+
+.select-section{
+  width:25%;
+}
+
+.search-input{
+  width: 40%;
+}

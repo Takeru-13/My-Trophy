@@ -110,15 +110,17 @@ function MyTrophies() {
   return (
     <div>
       <h1 className="title-logo" id="page_top">
-        <a href="#"><img src="/images/trophy-logo.png" alt="" /></a>
+        <Link to="/home" className="no-hover">
+          <img src="/images/trophy-logo.png" alt="Trophy Logo" />
+        </Link>
       </h1>
 
-      <h2 className="all-head">自分のトロフィー</h2>
+      <h2 className="all-head">トロフィー 一覧</h2>
 
       <div className="all-menu">
-        <select value={sortOption} onChange={(e) => setSortOption(e.target.value)}>
-          <option value="date" style={{ color: "black" }}>📅 日付順（新しい順）</option>
-          <option value="rank" style={{ color: "black" }}>🏆 ランク順（レア順）</option>
+        <select value={sortOption} onChange={(e) => setSortOption(e.target.value)} className="select-section">
+          <option value="date" style={{ color: "black" }}>日付順</option>
+          <option value="rank" style={{ color: "black" }}>ランク順</option>
         </select>
 
         <input

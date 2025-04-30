@@ -10,6 +10,7 @@ import {
           getDocs,
           query,
           collection,
+          where,
        } from "firebase/firestore";
 
 import { onAuthStateChanged } from "firebase/auth";
@@ -21,6 +22,7 @@ import './styles/Home.css';
 
 
 function Home() {
+  const [recentTrophies, setRecentTrophies] = useState([]); // ここで定義
   const [level, setLevel] = useState(1);
   const [experience, setExperience] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -30,6 +32,19 @@ function Home() {
   const toggleMenu = () => {
     setIsMenuOpen((prev) => !prev);
   };
+  useEffect(() => {
+  const unsubscribe = onAuthStateChanged(auth, (user) => {
+    if (user) {
+      setCurrentUserId(user.uid); // ログイン中のユーザーIDを設定
+      console.log("ログイン中のユーザーID:", user.uid);
+    } else {
+      setCurrentUserId(null); // ユーザーがログアウトした場合
+      console.log("ユーザーがログアウトしました");
+    }
+  });
+
+  return () => unsubscribe(); // クリーンアップ
+}, []);
 
   // 新着トロフィーの取得
   const fetchLatestTrophies = async () => {
@@ -41,32 +56,63 @@ function Home() {
     const snapshot = await getDocs(q);
     return snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
   };
+  useEffect(() => {
+    if (!currentUserId) return;
+  
+    const q = query(
+      collection(db, "trophies"),
+      where("ownerId", "==", currentUserId)
+    );
+  
+    const unsubscribe = onSnapshot(q, (snapshot) => {
+      const trophies = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      setRecentTrophies(trophies); // 最近獲得したトロフィーを更新
+      console.log("最近のトロフィー:", trophies);
+    });
+
+    
+  
+    return () => unsubscribe(); // クリーンアップ
+  }, [currentUserId]);
 
   useEffect(() => {
-    let unsubscribeSnapshot = () => {};
-  
-    const unsubscribeAuth = onAuthStateChanged(auth, async (user) => {
-      if (!user) return;
-  
-      setCurrentUserId(user.uid);
-  
-      const userDocRef = doc(db, "users", user.uid);
-      unsubscribeSnapshot = onSnapshot(userDocRef, (docSnapshot) => {
-        if (docSnapshot.exists()) {
-          const userData = docSnapshot.data();
-          console.log("Firestoreから取得したユーザーデータ:", userData);
-          setLevel(userData.level); // レベルを更新
-          setExperience(userData.experience); // 経験値を更新
-          setUserData(userData);
-        }
-      });
+    if (!currentUserId) return;
+
+    const userRef = doc(db, "users", currentUserId);
+
+    const unsubscribe = onSnapshot(userRef, (doc) => {
+      if (doc.exists()) {
+        const userData = doc.data();
+        setExperience(userData.experience || 0); // 経験値を更新
+        setLevel(userData.level || 1); // レベルを更新
+        console.log("ユーザーデータ:", userData);
+      }
     });
-  
-    return () => {
-      unsubscribeAuth();      // 認証の監視解除
-      unsubscribeSnapshot();  // Firestoreの監視解除
-    };
-  }, []);
+
+    return () => unsubscribe(); // クリーンアップ
+  }, [currentUserId]);
+
+  useEffect(() => {
+    if (!currentUserId) return;
+
+    const userRef = doc(db, "users", currentUserId);
+
+    const unsubscribe = onSnapshot(userRef, (doc) => {
+      if (doc.exists()) {
+        const userData = doc.data();
+        setUserData(userData); // ユーザーデータを更新
+        console.log("ユーザーデータ:", userData);
+      }
+    });
+
+    return () => unsubscribe(); // クリーンアップ
+  }, [currentUserId]);
+
+
+
   return (
 
     <div style={{ textAlign: "center", marginTop: "50px" }}>
@@ -86,9 +132,9 @@ function Home() {
           <h2>{userData.name} </h2>
         </div>
       )}
-
-      {/* その他のホームコンテンツ（レベル表示・トロフィー一覧など） */}
     </div>
+
+
       <div style={styles.levelContainer}>
         <div className="level-text" style={styles.levelHeader}>
         
@@ -141,9 +187,7 @@ function Home() {
       {/* 他ユーザーの新着トロフィー */}
 
       <section>
-      {currentUserId && (
       <LatestTrophies currentUserId={currentUserId} />
-)}
       </section>
 
           <a href="#page_top" className="page_top_btn">↑</a>

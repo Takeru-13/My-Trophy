@@ -1,0 +1,65 @@
+.trophy-card {
+    background: #1e1e2f;
+    border-radius: 12px;
+    padding: 1rem;
+    color: #fff;
+    margin: 1rem auto;
+    width: 80%;
+    max-width: 800px;
+    box-shadow: 0 0 12px #0ff5;
+  }
+  
+  .trophy-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .trophy-image {
+    width: 120px; /* 以前より少し大きめに */
+    height: auto;
+    max-height: 100px;
+    object-fit: contain;
+    flex-shrink: 0;
+    margin: auto 0;
+  }
+  
+  .trophy-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .trophy-title {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 0.3rem;
+  }
+  
+  .trophy-episode {
+    font-size: 0.95rem;
+    color: #ccc;
+    margin-bottom: 0.8rem;
+  }
+  
+  .trophy-meta {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    font-size: 0.8rem;
+    color: #aaa;
+  }
+  
+  .trophy-title, .trophy-episode {
+    word-break: break-word;
+    white-space: normal;
+  }
+
+  .trophy-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-width: 0; /* ←これがないとテキストがはみ出す場合も */
+  }

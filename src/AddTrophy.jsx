@@ -1,13 +1,21 @@
 import React, { useState, useEffect } from "react";
 import { db, auth } from "./firebase";
-import { collection, addDoc, Timestamp, getDocs } from "firebase/firestore";
+import { collection, addDoc, Timestamp, getDoc, getDocs } from "firebase/firestore";
 import { Link } from "react-router-dom";
-import { doc, updateDoc } from "firebase/firestore";
+import {
+  setDoc,
+  doc,
+  updateDoc,
+  serverTimestamp
+} from "firebase/firestore";
 import {
   fetchTrophiesByUser,
   calculatePoints,
   calculateLevel
 } from "./utils/firestoreUtils";
+import "./styles/AddTrophies.css";
+
+
 
 function AddTrophy() {
   const [trophyName, setTrophyName] = useState("");
@@ -16,7 +24,6 @@ function AddTrophy() {
   const [episode, setEpisode] = useState("");
   const [date, setDate] = useState("");
   const [level, setLevel] = useState(1); 
-
 
   useEffect(() => {
     const loadLevel = async () => {
@@ -27,9 +34,9 @@ function AddTrophy() {
       const userLevel = calculateLevel(points);
       setLevel(userLevel);
     };
-
     loadLevel();
-  }, []); // ← マウント時に一度だけ実行！
+    
+  }, []);
 
 
   const handleSubmit = async (e) => {
@@ -39,49 +46,60 @@ function AddTrophy() {
       alert("ログインしていません！");
       return;
     }
-  
-
     try {
-      await addDoc(collection(db, "users", auth.currentUser.uid, "trophies"), {
+      const user = auth.currentUser;
+  
+      const trophyData = {
         name: trophyName,
         category: category,
         rank: rank,
         episode: episode,
         date: Timestamp.fromDate(new Date(date)),
-      });
-      
+        ownerId: user.uid,
+        createdAt: serverTimestamp(),
+        goodUsers: [],
+        comments: [],
+      };
+  
+    // トロフィーをFirestoreに追加
+    const newDocRef = await addDoc(collection(db, "trophies"), trophyData);
 
-      alert("トロフィーを保存しました！");
-      setTrophyName("");
-      setCategory("");
-      setRank("");
-      setEpisode("");
-      setDate("");
+    // ユーザーのサブコレクションにも保存
+    await setDoc(doc(db, "users", user.uid, "trophies", newDocRef.id), trophyData);
 
+    // 経験値とレベルを計算
+    const trophies = await fetchTrophiesByUser(user.uid);
+    const totalPoints = calculatePoints(trophies);
+    console.log("計算された経験値:", totalPoints); // デバッグ用
+    const userLevel = calculateLevel(totalPoints);
+    console.log("計算されたレベル:", userLevel); // デバッグ用
 
-      // ✅ const trophies = await fetchTrophiesByUser(auth.currentUser.uid);
-      const trophies = await fetchTrophiesByUser(auth.currentUser.uid);
-      const points = calculatePoints(trophies);
-      const userLevel = calculateLevel(points);
-      setLevel(userLevel);
+    // Firestoreのユーザーデータを更新
+    const userRef = doc(db, "users", user.uid);
+    await updateDoc(userRef, {
+      experience: totalPoints,
+      level: userLevel,
+    });
+    console.log("Firestoreに保存した経験値:", totalPoints);
+console.log("Firestoreに保存したレベル:", userLevel);
 
-      const userRef = doc(db, "users", auth.currentUser.uid);
-      await updateDoc(userRef, {
-        experience: points,
-        level: userLevel,
-      });
+    // ローカルステートを更新
+    setLevel(userLevel);
 
-    } catch (error) {
-      console.error("保存エラー:", error);
-      alert("トロフィーの保存に失敗しました");
-    }
-  };
-
-  async function fetchTrophiesByUser(userId) {
-    const querySnapshot = await getDocs(collection(db, "users", userId, "trophies"));
-    return querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+    alert("トロフィーを保存しました！");
+    setTrophyName("");
+    setCategory("");
+    setRank("");
+    setEpisode("");
+    setDate("");
+  } catch (error) {
+    console.error("トロフィーの保存中にエラーが発生しました:", error);
+    alert("エラーが発生しました。もう一度試してね！");
   }
+};
 
+
+  
   return (
     <div style={styles.container}>
       <h2>🏆 トロフィーを追加</h2>
@@ -137,8 +155,8 @@ function AddTrophy() {
           style={styles.input}
         />
 
-        <button type="submit" style={styles.button}>登録</button>
-        <Link to="/home" style={styles.linkButton}>ホームに戻る</Link>
+        <button type="submit" className="submit-button">GET</button>
+        <Link to="/home" className="go-to-home">HOME</Link>
 
       </form>
     </div>

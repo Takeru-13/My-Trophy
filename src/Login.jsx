@@ -14,17 +14,6 @@ function Login() {
     e.preventDefault();
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      // const user = userCredential.user;
-
-
-      // await setDoc(doc(db, "users", user.uid), {
-      //   email: user.email,
-      
-      //   xp: 0,
-      //   level: 1,
-      // });
-  
-
       navigate("/home");
     } catch (err) {
       setError("ログインに失敗しました。");
@@ -58,12 +47,40 @@ function Login() {
       <p style={{ marginTop: "20px", marginBottom: "20px" }}>
         アカウントをお持ちでない方は
       </p>
-       <Link to="/register">新規登録</Link>
+      <Link
+  to="/register"
+  style={styles.link}
+  onMouseEnter={(e) => {
+    e.target.style.backgroundColor = styles.linkHover.backgroundColor;
+    e.target.style.color = styles.linkHover.color;
+  }}
+  onMouseLeave={(e) => {
+    e.target.style.backgroundColor = "transparent";
+    e.target.style.color = styles.link.color;
+  }}
+>
+  新規登録
+</Link>
+
     
-       <p  style={{ marginTop: "20px", marginBottom: "20px" }}>
+      <p style={{ marginTop: "20px", marginBottom: "20px" }}>
         パスワードを忘れた方は
-        <Link to="/reset-password">こちら</Link>
       </p>
+
+      <Link
+  to="/reset-password"
+  style={styles.link}
+  onMouseEnter={(e) => {
+    e.target.style.backgroundColor = styles.linkHover.backgroundColor;
+    e.target.style.color = styles.linkHover.color;
+  }}
+  onMouseLeave={(e) => {
+    e.target.style.backgroundColor = "transparent";
+    e.target.style.color = styles.link.color;
+  }}
+>
+  こちら
+</Link>
 
       
     </div>
@@ -93,11 +110,15 @@ const styles = {
     border: "none",
     cursor: "pointer",
   },
-  a:{
-    '&:hover':{
-      backgroundColor: "black",
-      color: "aqua",
-    }
+  link: {
+    color: "aqua",
+    textDecoration: "none",
+    padding: "20px 30px",
+    transition: "all 0.3s ease",
+  },
+  linkHover: {
+    backgroundColor: "aqua",
+    color: "black",
   },
   error: {
     color: "red",

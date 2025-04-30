@@ -4,15 +4,17 @@ import { collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "../firebase";
 
 // ユーザーごとのトロフィーを取得
-export const fetchTrophiesByUser = async (uid) => {
-  const q = query(collection(db, "trophies"), where("uid", "==", uid));
-  const querySnapshot = await getDocs(q);
-  return querySnapshot.docs.map(doc => doc.data());
+export const fetchTrophiesByUser = async (userId) => {
+  const q = query(collection(db, "trophies"), where("ownerId", "==", userId));
+  const snapshot = await getDocs(q);
+  const trophies = snapshot.docs.map((doc) => doc.data());
+  console.log("取得したトロフィー:", trophies); // デバッグ用
+  return trophies;
 };
 
 // トロフィーの合計ポイントを計算
-export const calculatePoints = (trophies) => {
-  let points = 0;
+export const calculatePoints = (trophies, currentPoints = 0) => {
+  let points = currentPoints;
   trophies.forEach((trophy) => {
     switch (trophy.rank) {
       case "ブロンズ":
@@ -36,5 +38,5 @@ export const calculatePoints = (trophies) => {
 
 // ポイントに応じたレベルを算出
 export const calculateLevel = (points) => {
-  return Math.floor(points / 10) + 1;
+  return Math.floor(points / 10) + 1; // 例: 100ポイントごとにレベルアップ
 };
