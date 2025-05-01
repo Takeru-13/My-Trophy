@@ -38,7 +38,6 @@ function AddTrophy() {
     
   }, []);
 
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("ログイン中のユーザー:", auth.currentUser);
@@ -99,6 +98,7 @@ console.log("Firestoreに保存したレベル:", userLevel);
 };
 
 
+
   
   return (
     <div style={styles.container}>
@@ -147,8 +147,6 @@ console.log("Firestoreに保存したレベル:", userLevel);
           onChange={(e) => setEpisode(e.target.value)}
           style={{ ...styles.input, height: "80px" }}
         />
-
-        <label style={{ marginBottom: '4px', display: 'block' }}>日付（年/月/日）</label>
         <input
           type="date"
           value={date}

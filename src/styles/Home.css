@@ -20,7 +20,10 @@ h2{
     padding: 30px 20px;
     color: white;
   }
-  
+  .user-name h2{
+    font-size: 10px;
+    padding-bottom: 5px;
+  }
   .trophy-card {
     background: linear-gradient(145deg, #1c1c1c, #252525);
     box-shadow:

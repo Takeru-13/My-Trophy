@@ -132,7 +132,7 @@ const handleGoodClick = async (trophyId) => {
                   style={{ width: "50px", height: "auto", marginRight: "10px" }}
                 />
                 <h2 className="user-name"
-                 style={{ fontSize: "16px" }}
+                 style={{ fontSize: "14px" }}
                 >{trophy.userName}</h2>
 
                 <button
@@ -143,7 +143,7 @@ const handleGoodClick = async (trophyId) => {
                 </button>
               </div>
 
-              <div className="trophy-meta">
+              <div className="trophy-meta"style={{ marginTop: "10px" }}>
                 <span className="trophy-category">🏷 {trophy.category}</span>
                 <span className="trophy-date">📅 {trophy.date?.toDate().toLocaleDateString()}</span>
               </div>
