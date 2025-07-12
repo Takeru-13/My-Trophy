@@ -7,6 +7,7 @@ import AddTrophy from "./AddTrophy";
 import EditTrophy from "./EditTrophy";
 import AllTrophies from './AllTrophies';
 import ResetPassword from "./ResetPassword"; 
+import HomePage from "./HomePage";
 
 
 
@@ -14,8 +15,8 @@ function App() {
   return (
     <Router>
       <Routes>
+        <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/home" element={<Home />} /> 
         <Route path="/add" element={<AddTrophy />} />

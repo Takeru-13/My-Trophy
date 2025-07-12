@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { auth, db } from "./firebase";
 import { onAuthStateChanged } from "firebase/auth";
-import { collection, query, orderBy, limit, getDocs, where, onSnapshot } from "firebase/firestore";
+import { collection, query, orderBy, limit, where, onSnapshot } from "firebase/firestore";
 import "./styles/RecentTrophies.css";
 
 
@@ -41,7 +41,7 @@ function RecentTrophies() {
 
   return (
     <div className="trophy-container">
-      <h2>🏅 最近手に入れたトロフィー</h2>
+      <h2>最近手に入れたトロフィー</h2>
       {trophies.map((trophy) => (
       <div key={trophy.id} className="trophy-card">
       <div className="trophy-content">
@@ -57,7 +57,7 @@ function RecentTrophies() {
 
       <div className="trophy-meta">
         <span className="trophy-category">🏷 {trophy.category}</span>
-        <span className="trophy-date">📅 {trophy.date?.toDate().toLocaleDateString()}</span>
+        <span className="trophy-date"> {trophy.date?.toDate().toLocaleDateString()}</span>
       </div>
     </div>
   </div>

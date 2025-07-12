@@ -67,7 +67,7 @@ const LatestTrophies = ({ currentUserId }) => {
           })
         );
   
-        console.log("📦 トロフィー:", trophiesData);
+        console.log("トロフィー:", trophiesData);
         setLatestTrophies(trophiesData);
       } catch (error) {
         console.error("Error fetching latest trophies:", error);
@@ -107,7 +107,7 @@ const handleGoodClick = async (trophyId) => {
 
   return (
     <div className="trophy-container">
-      <h2>🌟 他のユーザーの新着トロフィー</h2>
+      <h2>他ユーザーの新着トロフィー</h2>
       {latestTrophies.map((trophy) => (
         <div key={trophy.id} className="trophy-card">
           <div className="trophy-content">
@@ -125,16 +125,17 @@ const handleGoodClick = async (trophyId) => {
               <div className="trophy-user"
                 style={{ textAlign: "left", height: "50px", paddingTop: "auto", display: "flex"}}
               >
-                <img
-                 src={`/user-icon/${trophy.userIcon}`}
-                  alt="ユーザーアイコン"
-                  className="user-icon"
-                  style={{ width: "50px", height: "auto", marginRight: "10px" }}
-                />
-                <h2 className="user-name"
-                 style={{ fontSize: "14px" }}
-                >{trophy.userName}</h2>
-
+                <div className="icon-user-name">
+                  <img
+                  src={`/user-icon/${trophy.userIcon}`}
+                    alt="ユーザーアイコン"
+                    className="user-icon"
+                    style={{ width: "50px", height: "auto", marginRight: "10px" }}
+                  />
+                  <h2 className="user-name"
+                  style={{ fontSize: "14px" }}
+                  >{trophy.userName}</h2>
+                </div>
                 <button
                   onClick={() => handleGoodClick(trophy.id)}
                   disabled={trophy.goodUsers?.includes(currentUserId)}

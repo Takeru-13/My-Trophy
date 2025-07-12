@@ -15,14 +15,14 @@ import {
 
 import { onAuthStateChanged } from "firebase/auth";
 import { fetchLatestTrophies } from "./utils/firestoreUtils";
-import { motion } from "framer-motion";
 import RecentTrophies from "./RecentTrophies";
 import LatestTrophies from "./LatestTrophies";
+// import HomePage from "./Homepage";
 import './styles/Home.css';
 
 
 function Home() {
-  const [recentTrophies, setRecentTrophies] = useState([]); // ここで定義
+  const [recentTrophies, setRecentTrophies] = useState([]);
   const [level, setLevel] = useState(1);
   const [experience, setExperience] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -115,7 +115,7 @@ function Home() {
 
   return (
 
-    <div style={{ textAlign: "center", marginTop: "50px" }}>
+    <div style={{ textAlign: "center", marginTop: "20px" }}>
       <h1 className="title-logo" id="page_top">
         <a href="#" className="no-hover"><img src="/images/trophy-logo.png" alt="" /></a>
       </h1>
@@ -155,7 +155,7 @@ function Home() {
             MENU
           </button>
           <div className={`menu-dropdown ${isMenuOpen ? "open" : ""}`}>
-            <Link to="/trophies" className="menu-item">🏆 トロフィー一覧</Link>
+            <Link to="/trophies" className="menu-item">トロフィー一覧</Link>
             <div
              className="menu-item"
              onClick={() => {
@@ -164,7 +164,7 @@ function Home() {
                  auth.signOut()
                    .then(() => {
                      alert("ログアウトしました！");
-                     window.location.href = "/login"; // ログイン画面にリダイレクト
+                     window.location.href = " /"; // ログイン画面にリダイレクト
                    })
                    .catch((error) => {
                      console.error("ログアウトエラー:", error);
@@ -173,7 +173,7 @@ function Home() {
                }
              }}
            >
-             🚪 ログアウト
+             ログアウト
            </div>
           </div>
           

@@ -102,8 +102,8 @@ console.log("Firestoreに保存したレベル:", userLevel);
   
   return (
     <div style={styles.container}>
-      <h2>🏆 トロフィーを追加</h2>
-      <p>🎮 あなたの現在のレベル: <strong>Lv.{level}</strong></p>      {/* ✅ ここにレベル表示を追加 */}
+      <h2 className="add-title">トロフィーを追加</h2>
+      <p className = "add-dic">あなたの現在のレベル: <strong>Lv.{level}</strong></p>      {/* ✅ ここにレベル表示を追加 */}
 
 
       <form onSubmit={handleSubmit} style={styles.form}>

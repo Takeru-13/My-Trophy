@@ -4,19 +4,22 @@
     padding: 1rem;
     color: #fff;
     margin: 1rem auto;
-    width: 80%;
+    width: 90%;
     max-width: 800px;
     box-shadow: 0 0 12px #0ff5;
   }
   
   .trophy-content {
-    display: flex;
     align-items: flex-start;
     gap: 1rem;
   }
+
+  .trophy-user{
+    justify-content:space-around;
+  }
   
   .trophy-image {
-    width: 120px; /* 以前より少し大きめに */
+    width: 120px;
     height: auto;
     max-height: 100px;
     object-fit: contain;
@@ -46,7 +49,7 @@
   
   .trophy-meta {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     gap: 1rem;
     font-size: 0.8rem;
     color: #aaa;

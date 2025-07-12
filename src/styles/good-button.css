@@ -18,3 +18,8 @@
   .good-button:active {
     transform: scale(0.95);
   }
+
+  .icon-user-name{
+    display:flex;
+    line-height: 48px;
+  }

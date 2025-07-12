@@ -1,206 +1,434 @@
-.trophy-card {
-  background-color: #fff;
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 16px;
-  width: 50%;
+/* MyTrophies.css - 専用スタイル */
+
+/* Header */
+.mytrophies-header {
   text-align: center;
-  /* overflow-wrap : wrap; */
-  transition: transform 0.2s ease;
-  overflow-wrap: break-word;
-  display: block;
+  margin-bottom: 0;
+  margin-top: 20px;
+
 }
 
-.title-logo{
-  text-align: center;
-}
-.title-logo a{
-  width: 100%;
+.logo-link {
+  display: inline-block;
+  margin-bottom: var(--spacing-md);
+  transition: var(--transition-normal);
   border: none;
+}
+
+.logo-link:hover {
+  transform: scale(1.05);
+}
+
+.logo {
+  height: 80px;
+  width: auto;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+}
+
+/* Controls Section */
+.controls-section {
+  margin-bottom: var(--spacing-xl);
+}
+
+.controls-grid {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+}
+
+.control-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.control-label {
+  font-size: var(--font-sm);
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-xs);
+  margin-top: 15px;
+}
+
+/* Stats Summary */
+.stats-summary {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-lg);
+  flex-wrap: wrap;
+  margin-top: var(--spacing-lg);
+  padding-top: var(--spacing-lg);
+  border-top: 1px solid var(--glass-border);
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.stat-number {
+  font-size: var(--font-xl);
+  font-weight: 700;
+  color: var(--accent-teal);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.stat-label {
+  font-size: var(--font-sm);
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+
+/* Trophy Card */
+.trophy-card {
+  position: relative;
+  transition: var(--transition-normal);
+  overflow: hidden;
+}
+
+.trophy-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-large), 0 0 30px rgba(255, 255, 255, 0.1);
+}
+
+/* Rank-specific styling */
+.trophy-card.bronze-accent {
+  border-left: 4px solid #cd7f32;
+  box-shadow: var(--shadow-large), 0 0 20px rgba(205, 127, 50, 0.2);
+}
+
+.trophy-card.silver-accent {
+  border-left: 4px solid #c0c0c0;
+  box-shadow: var(--shadow-large), 0 0 20px rgba(192, 192, 192, 0.2);
+}
+
+.trophy-card.gold-accent {
+  border-left: 4px solid #ffd700;
+  box-shadow: var(--shadow-large), 0 0 20px rgba(255, 215, 0, 0.2);
+}
+
+.trophy-card.rainbow-accent {
+  border-left: 4px solid;
+  border-image: linear-gradient(45deg, #ff0000, #ff7700, #ffdd00, #00ff00, #0077ff, #3300ff, #7700ff) 1;
+  box-shadow: var(--shadow-large), 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+/* Trophy Image Container */
+.trophy-image-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: var(--spacing-md);
+  padding: var(--spacing-md);
+  padding-top : 0;
+  padding-bottom: 0;
+}
+
+.trophy-image {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+  transition: var(--transition-normal);
+}
+
+.trophy-card:hover .trophy-image {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.trophy-rank-badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color:rgba(117, 173, 95, 0) ;
+  color: rgba(0, 193, 177, 1);
+  font-size: var(--font-xs);
+  font-weight: 600;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: 0 var(--radius-md) 0 var(--radius-md);
+  border: solid 1px rgba(0, 193, 177, 1) ;
+  box-shadow: var(--shadow-small);
+}
+
+/* Trophy Content */
+.trophy-content {
   text-align: center;
 }
 
-.all-head{
-    text-align: center;
-    margin: 30px 0;
+.trophy-title {
+  font-size: var(--font-lg);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-sm);
+  line-height: 1.4;
 }
-.all-menu{
-    padding-bottom: 30px;
-    display: flex;
-    width: 100%;
-    margin: 0 auto;
-    justify-content: center;
+
+.trophy-episode {
+  font-size: var(--font-base);
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-md);
+  line-height: 1.2;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
-back-to-home
 
-.trophy-list {
-    /* display: flex; */
-    /* flex-wrap: wrap; */
-    gap: 16px;
-    justify-content: center;
-    padding: 20px;
+/* Trophy Meta */
+.trophy-meta {
+  display: flex;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-md);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  font-size: var(--font-sm);
+  color: var(--text-muted);
+}
+
+.meta-icon {
+  font-size: var(--font-base);
+}
+
+.meta-text {
+  font-weight: 500;
+}
+
+/* Trophy Actions */
+.trophy-actions {
+  justify-content: space-around;
+  display: flex;
+  margin-top: var(--spacing-md);
+}
+
+.btn-icon {
+  margin-right: var(--spacing-xs);
+}
+
+/* Empty State */
+.empty-state {
+  text-align: center;
+  padding: var(--spacing-xl);
+  grid-column: 1 / -1;
+}
+
+.empty-icon {
+  font-size: 4rem;
+  margin-bottom: var(--spacing-md);
+  opacity: 0.5;
+}
+
+.empty-state h3 {
+  font-size: var(--font-xl);
+  margin-bottom: var(--spacing-sm);
+  color: var(--text-secondary);
+}
+
+.empty-state p {
+  font-size: var(--font-base);
+  color: var(--text-muted);
+  margin-bottom: var(--spacing-lg);
+}
+
+/* Footer */
+.mytrophies-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-xl);
+  padding-top: var(--spacing-lg);
+  border-top: 1px solid var(--glass-border);
+}
+
+.scroll-to-top {
+  position: fixed;
+  bottom: var(--spacing-lg);
+  right: var(--spacing-lg);
+  width: 50px;
+  height: 50px;
+  background: #263648;
+  color:aqua;
+  border: none;
+  border-radius: var(--radius-round);
+  border: solid 1px aqua;
+  cursor: pointer;
+  font-size: var(--font-lg);
+  font-weight: 700;
+  box-shadow: var(--shadow-medium);
+  transition: var(--transition-normal);
+  z-index: 100;
+}
+
+.trophy-actions{
+  margin: 0 auto;
+  width: 50%;
+}
+
+.edit-btn {
+  margin-right: 5px;
+  margin-left: 0;
+  width: 120px;
+}
+.del-btn {
+  margin-left: 5px;
+  width: 120px;
+}
+
+.scroll-to-top:hover {
+  transform: translateY(-2px);
+  background: aqua;
+  color: gray;
+  box-shadow: var(--shadow-large);
+}
+
+/* Loading */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 50vh;
+  gap: var(--spacing-md);
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 3px solid var(--glass-border);
+  border-top: 3px solid var(--accent-blue);
+  border-radius: var(--radius-round);
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Notifications */
+.notification {
+  position: fixed;
+  top: var(--spacing-lg);
+  right: var(--spacing-lg);
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-radius: var(--radius-md);
+  color: white;
+  font-weight: 600;
+  z-index: 1000;
+  animation: slideInRight 0.3s ease-out;
+}
+
+.notification.success {
+  background: var(--accent-success);
+  box-shadow: 0 4px 15px rgba(81, 207, 102, 0.3);
+}
+
+.notification.error {
+  background: var(--accent-error);
+  box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+}
+
+@keyframes slideInRight {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .mytrophies-container {
+    padding: 0 10px;
   }
   
-  .cate-del{
-    display: flex;
-    width:50%;
-    margin: 0 auto;
-    justify-content: center;
-  }
-  .cate-del p{
-    border:#ccc solid 1px;
-    margin-right: 5px;
-  }
-  .trophy-card:hover {
-    transform: translateY(-5px);
+  .trophies-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
   }
   
-  .trophy-card h3 {
-    margin: 0;
-    font-size: 1.2em;
+  .controls-grid {
+    grid-template-columns: 1fr;
   }
   
-  .trophy-card p {
-    color: #555;
-    margin-bottom: 8px;
-    display: inline;
+  .stats-summary {
+    gap: var(--spacing-md);
   }
   
-  .search-input {
-    display: block;
-    padding: 8px;
-    width: 80%;
-    min-width: 200px;
-    max-width: 300px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-  }
   
-  .back-to-home {
-    color: aquamarine;
-    display: block;
-    width: 120px;
-    height: 50px;
-    line-height: 50px;
-    padding: 0px;
-    margin: 20px auto;
-    text-align: center;
-    font-size: 1.2em;
-    text-decoration: none;
-    margin-top: 0;
-    border: solid 2px aquamarine;
-    margin-bottom: 30px;
-    font-weight: normal;
+  .trophy-actions .btn {
+    /* width: 50%; */
+    text-align:center;
   }
 
-  .back-to-home:hover{
-    color:#000000;
-    background-color: aquamarine;
-  }
-  
-  .trophy-title{
-    padding: 10px 0;
-  }
-
-  .trophy-episod{
-    padding-bottom: 10px;
-    margin-bottom: 10px;
-  }
-
-  .cate-del{
-    padding-top: 10px;
-    margin: 10px auto;
-  }
-
-  a{
-    border: none;
-  }
-  .edit-button {
-    text-align: center;
-    font-size:18px;
-    width: 80px;
-    height: 30px;
-    line-height: 30px;
-    padding: 0;
-    border: 2px solid aquamarine;
-    text-align: center;
-    color:aquamarine;
-    margin-right: 5px;
-    margin-left: 0;
-  }
-
-  .edit-button:hover{
-    border: none;
-    background-color: aquamarine;
-    color: black;
-  }
-
-  .del-button{
-    font-size:18px;
-    text-align: center;
-    background-color: rgba(0, 0, 0, 0);
-    /* font-size: 20px; */
-    width: 80px;
-    height: 33px;
-    line-height: 33px;
-    padding: 0;
-    border: 2px solid rgb(255, 132, 50);
-    text-align: center;
-    color:rgb(255, 132, 50);
-    margin-left: 5px;
-  }
-  
-  .del-button:hover{
-    border: none;
-    background-color: rgb(255, 132, 50);
-    color: black;
-    transition: 0.5s;
-  }
-
-  .cata-del{
-    margin: 10px auto;
-  }
-
-  .page_top_btn{
-    width: 30px;
-    height: 30px;
+  .home-btn{
+    color: aqua;
     border: solid 1px aqua;
-    line-height: 30px;
   }
 
-  .page_top_btn:hover{
+  .home-btn:hover{
     background-color: aqua;
-    color:#000000;
+    color: black;
   }
-
-  .good-button{
-    color: white;
-  }
-
-.all-menu select {
-  background-color: white;
-  border: 1px solid #ccc;
-  border-radius: 7px;
-  padding: 5px 10px;
-  font-size: 12px;
-  color: black;
-}
-
-.no-hover{
-  width: 80%;
-  padding: 0;
-}
-
-.no-hover:hover {
-
-  background-color: inherit !important; /* 色を変更しない */
   
+  .scroll-to-top {
+    bottom: var(--spacing-md);
+    right: var(--spacing-md);
+    width: 45px;
+    height: 45px;
+  }
 }
 
-.select-section{
-  width:25%;
+@media (max-width: 480px) {
+  .logo {
+    height: 60px;
+  }
+  
+  .trophy-card {
+    padding: var(--spacing-md);
+  }
+  
+  .trophy-image {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .trophy-title {
+    font-size: var(--font-base);
+  }
+  
+  .trophy-episode {
+    font-size: var(--font-sm);
+      overflow: scroll;
+  }
+  
+
+  
+  .notification {
+    left: var(--spacing-sm);
+    right: var(--spacing-sm);
+    top: var(--spacing-sm);
+  }
 }
 
-.search-input{
-  width: 40%;
+.page-container {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+span {
+  margin: 0;
 }
