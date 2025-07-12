@@ -5,7 +5,7 @@ import { doc, setDoc } from "firebase/firestore";
 import { Link } from "react-router-dom";
 import { auth, db } from "./firebase";
 import IconSelector from "./IconSelector";
-import './styles/Login.css';
+import './styles/Roguin.css';
 
 function Register() {
   const [email, setEmail] = useState("");
