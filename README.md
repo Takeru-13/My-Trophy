@@ -47,10 +47,47 @@ Web開発の学習を兼ねて、**React + Firebaseによる基本的なCRUDア�
 ---
 
 ## 📸 スクリーンショット
-| ホーム画面（レベル & 最近のトロフィー） | トロフィー追加画面 |
-| --- | --- |
-| ![Home](./screenshots/home.png) | ![Add](./screenshots/add.png) |
+## 🏆 MyTrophy – Screenshots
 
+<div align="center">
+
+<!-- 1段目：ホーム / 一覧 -->
+<table>
+  <tr>
+    <td align="center">
+      <!-- Home（レベルバー & 最近トロフィー） -->
+      <img src="https://github.com/user-attachments/assets/043816f9-7c46-4335-8831-c0a5f00c3c78" width="430" alt="MyTrophy Home – レベルバーと最近のトロフィー" />
+      <div><sub>ホーム：レベル・経験値バー / 最近のトロフィー</sub></div>
+    </td>
+    <td align="center">
+      <!-- List（並び替え・検索） -->
+      <img src="https://github.com/user-attachments/assets/30a90441-4433-4dd8-80ef-936c7c178051" width="430" alt="MyTrophy List – 並び替えと検索" />
+      <div><sub>一覧：並び替え / 検索</sub></div>
+    </td>
+  </tr>
+</table>
+
+<!-- 2段目：カード一覧 / 追加フォーム -->
+<table>
+  <tr>
+    <td align="center">
+      <!-- Cards（カード装飾 & 詳細） -->
+      <img src="https://github.com/user-attachments/assets/49d2326f-bf0a-4df6-bfa4-6d706929368c" width="430" alt="MyTrophy Cards – トロフィーのカード表示" />
+      <div><sub>カード：トロフィー詳細カード（装飾付き）</sub></div>
+    </td>
+    <td align="center">
+      <!-- Add Form（追加） -->
+      <img src="https://github.com/user-attachments/assets/e8da9b09-7db6-4c4e-b367-d66db7a56a95" width="430" alt="MyTrophy Add – トロフィー追加フォーム" />
+      <div><sub>追加フォーム：トロフィーを新規登録</sub></div>
+    </td>
+  </tr>
+</table>
+
+<!-- モバイル縦長は単独で -->
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/6f0d85ac-ddbb-426e-bd5c-f5d781002ae7" width="360" alt="MyTrophy Feed (Mobile) – 他ユーザーの新着トロフィー" /><br/>
+  <sub>モバイル：他ユーザーの新着トロフィー（フィード）</sub>
+</p>
 ---
 
 ## 🛠 技術スタック
